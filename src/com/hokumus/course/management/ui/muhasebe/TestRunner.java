@@ -12,7 +12,7 @@ import com.hokumus.course.management.util.DatabaseBaseService;
 
 public class TestRunner {
 	public static void main(String[] args) {
-		new MainMuhasebeUi().setVisible(true);
+		/*new MainMuhasebeUi().setVisible(true);
 		
 		
 		
@@ -61,6 +61,6 @@ public class TestRunner {
 		finally {
 			new MainMuhasebeUi().setVisible(true);
 		}
-		
+	*/	
 	}
 }

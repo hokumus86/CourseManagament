@@ -1,6 +1,13 @@
 package com.hokumus.course.management.ui.mainscreen;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 import com.hokumus.course.management.model.kullanici.Role;
 import com.hokumus.course.management.ui.ik.ApplicationForm;
@@ -17,7 +24,6 @@ import com.hokumus.course.management.ui.muhasebe.ElektirikFatOdemeUi;
 import com.hokumus.course.management.ui.muhasebe.GelirEnvanterUi;
 import com.hokumus.course.management.ui.muhasebe.GiderEnvanterUi;
 import com.hokumus.course.management.ui.muhasebe.InternetFatOdemeUi;
-import com.hokumus.course.management.ui.muhasebe.MainMuhasebeUi;
 import com.hokumus.course.management.ui.muhasebe.OgrenciOdemeUi;
 import com.hokumus.course.management.ui.muhasebe.OgretmenOdemeUi;
 import com.hokumus.course.management.ui.muhasebe.PersonelOdemeUi;
@@ -33,20 +39,12 @@ import com.hokumus.course.management.ui.yonetim.ProductivityFrame;
 import com.hokumus.course.management.ui.yonetim.SalonAcma;
 import com.hokumus.course.management.util.CourseUtils;
 
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class MainFrame extends JFrame {
 	private EnterUser user;
 
 	public MainFrame(EnterUser user) {
-		this.user = user; // Para metre almayýp giriþ ekranýný ana ekran açýlýrken kapatýp
-		// daha sonra ana ekrandan istendiðinde yeni istance yaratýlabilir.
+		this.user = user; // Para metre almayï¿½p giriï¿½ ekranï¿½nï¿½ ana ekran aï¿½ï¿½lï¿½rken kapatï¿½p
+		// daha sonra ana ekrandan istendiï¿½inde yeni istance yaratï¿½labilir.
 		intialize();
 		if (CourseUtils.userRole == Role.ADMIN)
 			intialize();
@@ -120,8 +118,8 @@ public class MainFrame extends JFrame {
 		JMenu mnGelir = new JMenu("Gelir");
 		menuBar.add(mnGelir);
 		
-		JMenuItem mnýtmrencideme = new JMenuItem("\u00D6\u011Frenci \u00D6deme");
-		mnýtmrencideme.addActionListener(new ActionListener() {
+		JMenuItem mnItemOgrOdm = new JMenuItem("\u00D6\u011Frenci \u00D6deme");
+		mnItemOgrOdm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel ooUi = new OgrenciOdemeUi();
@@ -130,10 +128,10 @@ public class MainFrame extends JFrame {
 				ooUi.setVisible(true);
 			}
 		});
-		mnGelir.add(mnýtmrencideme);
+		mnGelir.add(mnItemOgrOdm);
 		
-		JMenuItem mnýtmBorSorgulama = new JMenuItem("Bor\u00E7 Sorgulama");
-		mnýtmBorSorgulama.addActionListener(new ActionListener() {
+		JMenuItem mnItemBorcSorg = new JMenuItem("Bor\u00E7 Sorgulama");
+		mnItemBorcSorg.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel bsUi = new BorcSorgulamaUi();
@@ -142,10 +140,10 @@ public class MainFrame extends JFrame {
 				bsUi.setVisible(true);
 			}
 		});
-		mnGelir.add(mnýtmBorSorgulama);
+		mnGelir.add(mnItemBorcSorg);
 		
-		JMenuItem mnýtmEnvanter_1 = new JMenuItem("Envanter");
-		mnýtmEnvanter_1.addActionListener(new ActionListener() {
+		JMenuItem mnIteEnvr = new JMenuItem("Envanter");
+		mnIteEnvr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel gelirEnvanter = new GelirEnvanterUi();
@@ -154,13 +152,13 @@ public class MainFrame extends JFrame {
 				gelirEnvanter.setVisible(true);
 			}
 		});
-		mnGelir.add(mnýtmEnvanter_1);
+		mnGelir.add(mnIteEnvr);
 		
 		JMenu mnGider = new JMenu("Gider");
 		menuBar.add(mnGider);
 		
-		JMenuItem mnýtmretmendeme = new JMenuItem("\u00D6\u011Fretmen \u00D6deme");
-		mnýtmretmendeme.addActionListener(new ActionListener() {
+		JMenuItem mnItemOgrmnOdm = new JMenuItem("\u00D6\u011Fretmen \u00D6deme");
+		mnItemOgrmnOdm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel ogretmenOdeme = new OgretmenOdemeUi();
@@ -169,10 +167,10 @@ public class MainFrame extends JFrame {
 				ogretmenOdeme.setVisible(true);
 			}
 		});
-		mnGider.add(mnýtmretmendeme);
+		mnGider.add(mnItemOgrmnOdm);
 		
-		JMenuItem mnýtmPersoneldeme = new JMenuItem("Personel \u00D6deme");
-		mnýtmPersoneldeme.addActionListener(new ActionListener() {
+		JMenuItem mnItmPersoneldeme = new JMenuItem("Personel \u00D6deme");
+		mnItmPersoneldeme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel personelOdeme = new PersonelOdemeUi();
@@ -181,10 +179,10 @@ public class MainFrame extends JFrame {
 				personelOdeme.setVisible(true);
 			}
 		});
-		mnGider.add(mnýtmPersoneldeme);
+		mnGider.add(mnItmPersoneldeme);
 		
-		JMenuItem mnýtmEnvanter = new JMenuItem("Envanter");
-		mnýtmEnvanter.addActionListener(new ActionListener() {
+		JMenuItem mnItmEnvanter = new JMenuItem("Envanter");
+		mnItmEnvanter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel giderEnvanter = new GiderEnvanterUi();
@@ -193,13 +191,13 @@ public class MainFrame extends JFrame {
 				giderEnvanter.setVisible(true);
 			}
 		});
-		mnGider.add(mnýtmEnvanter);
+		mnGider.add(mnItmEnvanter);
 		
 		JMenu mnDierGiderler = new JMenu("Di\u011Fer Giderler");
 		mnGider.add(mnDierGiderler);
 		
-		JMenuItem mnýtmElektrikFatura = new JMenuItem("Elektrik Fatura");
-		mnýtmElektrikFatura.addActionListener(new ActionListener() {
+		JMenuItem mnItmElektrikFatura = new JMenuItem("Elektrik Fatura");
+		mnItmElektrikFatura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel elektrikFatura = new ElektirikFatOdemeUi();
@@ -208,10 +206,10 @@ public class MainFrame extends JFrame {
 				elektrikFatura.setVisible(true);
 			}
 		});
-		mnDierGiderler.add(mnýtmElektrikFatura);
+		mnDierGiderler.add(mnItmElektrikFatura);
 		
-		JMenuItem mnýtmSuFatura = new JMenuItem("Su Fatura");
-		mnýtmSuFatura.addActionListener(new ActionListener() {
+		JMenuItem mnItmSuFatura = new JMenuItem("Su Fatura");
+		mnItmSuFatura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel suFatura = new SuFatOdemeUi();
@@ -220,10 +218,10 @@ public class MainFrame extends JFrame {
 				suFatura.setVisible(true);
 			}
 		});
-		mnDierGiderler.add(mnýtmSuFatura);
+		mnDierGiderler.add(mnItmSuFatura);
 		
-		JMenuItem mnýtmDoalgazFatura = new JMenuItem("Do\u011Falgaz Fatura");
-		mnýtmDoalgazFatura.addActionListener(new ActionListener() {
+		JMenuItem mnItmDoalgazFatura = new JMenuItem("Do\u011Falgaz Fatura");
+		mnItmDoalgazFatura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel dogalgazFatura = new DogalgazFatOdemeUi();
@@ -232,10 +230,10 @@ public class MainFrame extends JFrame {
 				dogalgazFatura.setVisible(true);
 			}
 		});
-		mnDierGiderler.add(mnýtmDoalgazFatura);
+		mnDierGiderler.add(mnItmDoalgazFatura);
 		
-		JMenuItem mnýtmInternetFatura = new JMenuItem("\u0130nternet Fatura");
-		mnýtmInternetFatura.addActionListener(new ActionListener() {
+		JMenuItem mnItmInternetFatura = new JMenuItem("\u0130nternet Fatura");
+		mnItmInternetFatura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel internetFatura = new InternetFatOdemeUi();
@@ -244,10 +242,10 @@ public class MainFrame extends JFrame {
 				internetFatura.setVisible(true);
 			}
 		});
-		mnDierGiderler.add(mnýtmInternetFatura);
+		mnDierGiderler.add(mnItmInternetFatura);
 		
-		JMenuItem mnýtmVergideme = new JMenuItem("Vergi \u00D6deme");
-		mnýtmVergideme.addActionListener(new ActionListener() {
+		JMenuItem mnItmVergideme = new JMenuItem("Vergi \u00D6deme");
+		mnItmVergideme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel vergiOdeme = new VergiOdemeUi();
@@ -256,7 +254,7 @@ public class MainFrame extends JFrame {
 				vergiOdeme.setVisible(true);
 			}
 		});
-		mnDierGiderler.add(mnýtmVergideme);
+		mnDierGiderler.add(mnItmVergideme);
 		
 		JMenu mnzet = new JMenu("\u00D6zet");
 		menuBar.add(mnzet);
@@ -264,8 +262,8 @@ public class MainFrame extends JFrame {
 		JMenu mnAylkzet = new JMenu("Ayl\u0131k \u00D6zet");
 		mnzet.add(mnAylkzet);
 		
-		JMenuItem mnýtmAylkGelir = new JMenuItem("Ayl\u0131k Gelir");
-		mnýtmAylkGelir.addActionListener(new ActionListener() {
+		JMenuItem mnItmAylkGelir = new JMenuItem("Ayl\u0131k Gelir");
+		mnItmAylkGelir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel aylikGelir = new AylikGelirUi();
@@ -274,10 +272,10 @@ public class MainFrame extends JFrame {
 				aylikGelir.setVisible(true);
 			}
 		});
-		mnAylkzet.add(mnýtmAylkGelir);
+		mnAylkzet.add(mnItmAylkGelir);
 		
-		JMenuItem mnýtmAylkGider = new JMenuItem("Ayl\u0131k Gider");
-		mnýtmAylkGider.addActionListener(new ActionListener() {
+		JMenuItem mnItmAylkGider = new JMenuItem("Ayl\u0131k Gider");
+		mnItmAylkGider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel aylikGider = new AylikGiderUi();
@@ -286,10 +284,10 @@ public class MainFrame extends JFrame {
 				aylikGider.setVisible(true);
 			}
 		});
-		mnAylkzet.add(mnýtmAylkGider);
+		mnAylkzet.add(mnItmAylkGider);
 		
-		JMenuItem mnýtmAylkKarzarar = new JMenuItem("Ayl\u0131k Kar/Zarar");
-		mnýtmAylkKarzarar.addActionListener(new ActionListener() {
+		JMenuItem mnItmAylkKarzarar = new JMenuItem("Ayl\u0131k Kar/Zarar");
+		mnItmAylkKarzarar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel aylikKarZarar = new AylikKarZararUi();
@@ -298,13 +296,13 @@ public class MainFrame extends JFrame {
 				aylikKarZarar.setVisible(true);
 			}
 		});
-		mnAylkzet.add(mnýtmAylkKarzarar);
+		mnAylkzet.add(mnItmAylkKarzarar);
 		
 		JMenu mnYllkzet = new JMenu("Y\u0131ll\u0131k \u00D6zet");
 		mnzet.add(mnYllkzet);
 		
-		JMenuItem mnýtmYllkGelir = new JMenuItem("Y\u0131ll\u0131k Gelir");
-		mnýtmYllkGelir.addActionListener(new ActionListener() {
+		JMenuItem mnItmYllkGelir = new JMenuItem("Y\u0131ll\u0131k Gelir");
+		mnItmYllkGelir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel yillikGelir = new YillikGelirUi();
@@ -313,10 +311,10 @@ public class MainFrame extends JFrame {
 				yillikGelir.setVisible(true);
 			}
 		});
-		mnYllkzet.add(mnýtmYllkGelir);
+		mnYllkzet.add(mnItmYllkGelir);
 		
-		JMenuItem mnýtmYllkGider = new JMenuItem("Y\u0131ll\u0131k Gider");
-		mnýtmYllkGider.addActionListener(new ActionListener() {
+		JMenuItem mnItmYllkGider = new JMenuItem("Y\u0131ll\u0131k Gider");
+		mnItmYllkGider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel yillikGider = new YillikZararUi();
@@ -325,10 +323,10 @@ public class MainFrame extends JFrame {
 				yillikGider.setVisible(true);
 			}
 		});
-		mnYllkzet.add(mnýtmYllkGider);
+		mnYllkzet.add(mnItmYllkGider);
 		
-		JMenuItem mnýtmYllkKarzarar = new JMenuItem("Y\u0131ll\u0131k Kar/Zarar");
-		mnýtmYllkKarzarar.addActionListener(new ActionListener() {
+		JMenuItem mnItmYllkKarzarar = new JMenuItem("Y\u0131ll\u0131k Kar/Zarar");
+		mnItmYllkKarzarar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().removeAll();
 				JPanel yillikKarZarar = new YillikKarZararUi();
@@ -337,7 +335,7 @@ public class MainFrame extends JFrame {
 				yillikKarZarar.setVisible(true);
 			}
 		});
-		mnYllkzet.add(mnýtmYllkKarzarar);
+		mnYllkzet.add(mnItmYllkKarzarar);
 		JMenu mnInsanKaynaklar = new JMenu("\u0130nsan Kaynaklar\u0131");
 		menuBar.add(mnInsanKaynaklar);
 		
@@ -370,7 +368,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 		mnInsanKaynaklar.add(mnItemPersonelEkle);
-		JMenuItem mnItemProductivity = new JMenuItem("Kurslarýn Verimliliði");
+		JMenuItem mnItemProductivity = new JMenuItem("Kurslarï¿½n Verimliliï¿½i");
 		mnItemProductivity.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mnItemProductivity_Action_Performed(e);
