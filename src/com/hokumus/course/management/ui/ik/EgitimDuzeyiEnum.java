@@ -2,9 +2,9 @@ package com.hokumus.course.management.ui.ik;
 
 public enum EgitimDuzeyiEnum {
 	Lise,
-	Önlisans,
+	Onlisans,
 	Lisans,
-	YüksekLisans,
+	YuksekLisans,
 	Doktora
 
 }
