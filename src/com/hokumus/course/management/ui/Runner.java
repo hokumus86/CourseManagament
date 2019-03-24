@@ -23,11 +23,11 @@ public class Runner {
 			Users usr = new Users();
 			usr.setUserName("hokumus");
 			usr.setPassword("123");
-			usr.setName("hüseyin");
-			usr.setEmail("hsklþfdlþflþ@dsfkdlþfsdk.com");
+			usr.setName("hï¿½seyin");
+			usr.setEmail("hsklï¿½fdlï¿½flï¿½@dsfkdlï¿½fsdk.com");
 			usr.setRdate(new Date());
 			usr.setRole(Role.ADMIN);
-			usr.setSurname("OKUMUÞ");
+			usr.setSurname("OKUMUï¿½");
 			try {
 				dao.kaydet(usr);
 			} catch (Exception e) {
@@ -40,7 +40,7 @@ public class Runner {
 			new EnterUser().setVisible(true);
 		}
 		
-		
+		//.............
 	}
 
 }
