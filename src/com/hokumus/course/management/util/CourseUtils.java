@@ -6,5 +6,6 @@ public class CourseUtils {
 	
 	public static String userName= null;
 	public static Role userRole=null;
+	public static String deneme;
 
 }
